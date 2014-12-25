@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<!-- Created with Adobe(R) technology -->
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script type="text/javascript" src="../src/sprite.js"></script>
+    <script type="text/javascript" src="prettify.js"></script>
+    <link type="text/css" rel="stylesheet" media="all" href="bootstrap.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="prettify.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="style.css"/>
+    <link type="text/css" rel="stylesheet" media="all" href="../src/sprite.css"/>
+</head>
+<body>
+
+
+
+<h2>Использование</h2>
+<p>Ставить в секцию  &lt;head&gt; страницы, на которую будет установлен плагин следующий код</p>
+<pre>
+    &lt;script src=&quot;http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js&quot;&gt;&lt;/script&gt;
+    &lt;script type=&quot;text/javascript&quot; src=&quot;http://molotov.hometlt.ru/sprite.js&quot;&gt;&lt;/script&gt;
+    &lt;link type=&quot;text/css&quot; rel=&quot;stylesheet&quot; media=&quot;all&quot; href=&quot;http://molotov.hometlt.ru/sprite.css&quot;/&gt;
+</pre>
+
+
+<p>в место, где хотите установить изобрадение следующую строку</p>
+<pre>&lt;div id=&quot;sprite1&quot;&gt;&lt;/div&gt;<br/>&lt;div id=&quot;sprite2&quot;&gt;&lt;/div&gt;</pre>
+
+<p>Затем, следующий код </p>
+    <pre>&lt;script type=&quot;text/javascript&quot;&gt;
+    $("#sprite1").sprite({
+        images: "../assets/Photo-{1-23}.jpg",
+        responsive: true, //по умолчанию false
+        width: 900,//по умолчанию 900
+        height: 600
+    });
+&lt;/script&gt;</pre>
+
+<p>3 способа перечисления фотографий</p>
+<ul>
+    <li>при помощи массива
+        <pre> images: ["../assets/Photo-1.jpg","../assets/Photo-2.jpg"]</pre>
+    </li>
+    <li>Использование "{}" для перечисляния группы фотографий с похожими названиями
+        <pre> images: "../assets/Photo-{1-23}.jpg",</pre>
+    </li>
+    <li>Использование "{}" для перечисляния отждельных фотографий
+        <pre> images: "../assets/Photo-{1,4,8}.jpg",</pre>
+    </li>
+</ul>
+
+<div id="sprite1"></div>
+<div id="sprite2"></div>
+<br/>
+<br/>
+
+
+<h1>2 вариант</h1>
+
+<h2>javascript</h2>
+    <pre> 
+        $(".molotov-sprite").sprite();
+    </pre>
+<h2>html</h2>
+    <pre>&lt;div class=&quot;molotov-sprite&quot; data-images=&quot;../assets/Photo-{2,4,6,8,10}.jpg&quot;  data-height=300 data-width=450&gt;&lt;/div&gt;<br/>&lt;div class=&quot;molotov-sprite&quot; data-images=&quot;../assets/Photo-{6-23}.jpg&quot; data-height=600&gt;&lt;/div&gt;<br/>&lt;div class=&quot;molotov-sprite&quot; data-images=&quot;{unexisted1.jpg,unexisted2.jpg}&quot; data-height=600&gt;&lt;/div&gt;</pre>
+
+    <div class="molotov-sprite" data-images="../assets/Photo-{2,4,6,8,10}.jpg"  data-height=300 data-width=450></div>
+    <div class="molotov-sprite" data-images="../assets/Photo-{6-23}.jpg" data-height=600></div>
+<p>Пример ошибки (изображения не загрузились)</p>
+    <div class="molotov-sprite" data-images="{unexisted1.jpg,unexisted2.jpg}" data-height=600></div>
+
+
+    <h2>Скачать</h2>
+<form role="form">
+    <div class="form-group">
+        <label for="check">кодовое слово</label>
+        <input type="text" class="form-control" id="check" placeholder="Enter code">
+    </div>
+    <a class="btn btn-primary" href="#" onclick="window.open('/files/all' + $('#check').val() + '.zip','_blank');">Скачать</a>
+</form>
+
+
+<h2>IFrame</h2>
+
+<pre>&lt;iframe  src=&quot;http://molotov.hometlt.ru/src?images=//molotov.hometlt.ru/assets/Photo-{1-23}.jpg&amp;responsive=1&amp;height=600&amp;width=900&quot; frameborder=&quot;0&quot; width=&quot;900&quot; height=&quot;600&quot;&gt;&lt;/iframe&gt;</pre>
+<iframe  src="http://molotov.hometlt.ru/frame.php?images=http://molotov.hometlt.ru/SamLight_assets/Photo-{1-23}.jpg&responsive=1&height=600&width=900" frameborder="0" width="902" height="602"></iframe>
+
+ <script>
+$(function(){
+    $("#sprite1").sprite({
+        images: "../assets/Photo-{1-23}.jpg",
+        responsive: true, //по умолчанию false
+        width: 900,//по умолчанию
+        height: 600//по умолчанию
+    });
+    $("#sprite2").sprite({
+        images: ["../assets/Photo-1.jpg","../assets/Photo-2.jpg"],
+        responsive: true
+    });
+    $(".molotov-sprite").sprite();
+
+    $("pre").addClass('prettyprint');
+    prettyPrint();
+})
+
+</script>
+
+
+
+</body>
+</html>
