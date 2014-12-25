@@ -3,4 +3,4 @@ molotov
 
 Timelapse viewer
 
-http://molotov.hometlt.ru/
+demo http://molotov.hometlt.ru/
